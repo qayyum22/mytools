@@ -6,7 +6,7 @@ import { ClipboardIcon } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
 
 
-export default function TailwindToCSS() {
+const TailwindToCSS = () => {
 
     const [input, setInput] = useState('');
     const [result, setResult] = useState('');
@@ -72,6 +72,7 @@ export default function TailwindToCSS() {
 
             </section>
         </main>
-    )
+    );
+};
 
-}
+export default TailwindToCSS;
