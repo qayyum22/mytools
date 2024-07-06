@@ -6,15 +6,6 @@ import { ClipboardIcon } from "@heroicons/react/24/outline";
 import { toast } from "sonner";
 
 
-
-
-
-
-
-
-
-
-
 export default function TailwindToCSS() {
 
     const [input, setInput] = useState('');
