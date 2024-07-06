@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+
 
 
 const Form = () => {
 
-    const [userData, setUserData] = useState(null);
+    // const [userData, setUserData] = useState(null);
 
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await axios.get("http://localhost:8000/");
-                console.log(response);
-                setUserData(response.data);
-            }
-            catch (error) {
-                console.log("Error Fetching user data: ", error);
-            }
-        };
-        fetchUserData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchUserData = async () => {
+    //         try {
+    //             const response = await axios.get("http://localhost:8000/");
+    //             console.log(response);
+    //             setUserData(response.data);
+    //         }
+    //         catch (error) {
+    //             console.log("Error Fetching user data: ", error);
+    //         }
+    //     };
+    //     fetchUserData();
+    // }, []);
 
 
     return (
         <div>
-            {userData ? (
+            {/* {userData ? (
                 <div>
                     <h2>User Details: </h2>
                     <p>ID: {userData.id}</p>
@@ -33,7 +33,9 @@ const Form = () => {
                 </div>
             ) : (
                 <p>Loading user data...</p>
-            )}
+            )} */}
+
+            User Form
         </div>
     );
 };

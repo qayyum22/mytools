@@ -1,7 +1,7 @@
 {
   "name": "mytools-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "My Tools",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
