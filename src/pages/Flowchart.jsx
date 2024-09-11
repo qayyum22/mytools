@@ -30,7 +30,7 @@ const Flowchart = () => {
             chartRef.current.innerHTML = graph;
             mermaid.init(undefined, chartRef.current);
         }
-    }, []);
+    }, [graphData]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
