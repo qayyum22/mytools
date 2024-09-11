@@ -1,24 +1,22 @@
-const express = require("express");
-const app = express()
-const database = require("./config/database");
-const cors = require('cors');
-const { signup } = require("./controller/Auth");
+import express, { json } from "express";
+const app = express();
+import {chat} from "./controller/groq.js";
+import cors from 'cors';
+// import { signup } from "./controller/Auth";
+// import { chat } from "./controller/LLM_APIs";
 
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const PORT = process.env.PORT;
 
 
-database.connect();
+// dbconnect();
 
-app.use(express.json);
-app.use(
-    cors({
-        origin: ["*"],
-        credentials: true,
-    }));
+app.use(json());
+app.use(cors());
 
 
 app.get("/", (req, res) => {
@@ -28,7 +26,9 @@ app.get("/", (req, res) => {
     })
 })
 
-app.post("/signup", signup);
+// app.post("/signup", signup);
+
+app.post("/chat",  chat);
 
 app.listen(PORT, () => {
     console.log(`App is listening at ${PORT}`);

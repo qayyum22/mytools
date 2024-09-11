@@ -1,4 +1,4 @@
-const CheatSheet = [
+export const CheatSheet = [
     {
         "title": "Layout",
         "content": [
@@ -20064,4 +20064,4 @@ const CheatSheet = [
     }
 ]
 
-export default CheatSheet;
+

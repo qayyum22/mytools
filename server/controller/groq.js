@@ -1,7 +1,7 @@
 import Groq from "groq-sdk";
 
-export const code = async (req, res) => {
-  const GROQ_API_KEY = process.env.GROQ_API_KEY;
+export const chat = async (req, res) => {
+  const GROQ_API_KEY ="";
   const groq = new Groq({ apiKey: GROQ_API_KEY });
   const { prompt } = req.body;
   console.log('Received prompt:', prompt);

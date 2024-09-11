@@ -1,8 +1,8 @@
 import postcss from "postcss";
 import postcssJs from "postcss-js";
-import Cheatsheet from "../data/Cheatsheet";
+import { CheatSheet } from "../data/Cheatsheet";
 
-const arbitrarySupportedClasses = {
+export const arbitrarySupportedClasses = {
     pt: "padding-top",
     pb: "padding-bottom",
     pl: "padding-left",
@@ -29,51 +29,54 @@ const arbitrarySupportedClasses = {
 };
 
 
-const convertToCss = (classNames) => {
-    let cssCode = '';
+export const convertToCss = (classNames) => {
+    let cssCode = ``;
     CheatSheet.forEach((element) => {
         element.content.forEach((content) => {
             content.table.forEach((list) => {
                 if (classNames.includes(list[0])) {
-                    cssCode += `${list[1]}\n`;
+
+                    cssCode += `${list[1]} \n`;
                 }
 
                 if (classNames.includes(list[1])) {
-                    const semicolon = list[2][list[2].length - 1] !== ';' ? ';' : '';
-                    cssCode += `${list[2]}${semicolon}\n`;
+                    const semicolon = list[2][list[2].length - 1] !== ";" ? ";" : "";
+                    cssCode += `${list[2]}${semicolon} \n`;
                 }
             });
         });
     });
 
+    // Check for arbitrary values
 
-    function convertClassNamesToCSS(classNames, arbitrarySupportedClasses) {
-        let cssCode = '';
+    const arbitraryClasses = classNames.filter((className) =>
+        className.includes("[")
+    );
 
-        const arbitraryClasses = classNames.filter((className) =>
-            className.includes("[")
-        );
+    arbitraryClasses.forEach((className) => {
+        try {
+            const property = className.split("-[")[0].replace(".", "");
 
-        arbitraryClasses.forEach((className) => {
-            try {
-                const property = className.split("-[")[0].replace(".", "");
-
-                const properyValue = className.match(/(?<=\[)[^\][]*(?=])/g)[0];
-                if (arbitrarySupportedClasses[property]) {
-                    cssCode += `${arbitrarySupportedClasses[property]}: ${properyValue};\n`;
-                }
+            const properyValue = className.match(/(?<=\[)[^\][]*(?=])/g)[0];
+            if (arbitrarySupportedClasses[property]) {
+                cssCode += `${arbitrarySupportedClasses[property]}: ${properyValue};\n`;
             }
-            catch (e) {
-                console.log(e);
-            }
-        });
+        }
+        catch (e) {
+            console.log(e)
+        }
+    });
 
-        return cssCode;
-    }
+    return cssCode;
+};
 
-};  
-
-
+export const getHoverClass = (input) => {
+    return input
+        .replaceAll("\n", " ")
+        .split(" ")
+        .filter((i) => i.startsWith("hover:"))
+        .map((i) => i.replace("hover:", ""));
+};
 
 const getBreakPoints = (input, breakpoint) => {
     return input
@@ -83,23 +86,18 @@ const getBreakPoints = (input, breakpoint) => {
         .map((i) => i.substring(3));
 };
 
-const getHoverClass = (input) => {
-    return input
-        .replaceAll("\n", " ")
-        .split(" ")
-        .filter((i) => i.startsWith("hover:"))
-        .map((i) => i.replace("hover:", ""));
-};
 
 
 
-const getConvertedClasses = (input) => {
+
+
+export const getConvertedClasses = (input) => {
     if (input === "") return "";
 
     const classNames = input.split(/\s+/).map((i) => i.trim()).filter((i) => i !== "");
     const breakpoints = CheatSheet[0].content[1].table;
 
-    const hoverClasses = getHoverClass(input);
+    const hoverClass = getHoverClass(input);
 
     const smClasses = getBreakPoints(input, "sm");
     const mdClasses = getBreakPoints(input, "md");
@@ -128,13 +126,13 @@ ${_2xlClasses.length !== 0
             ? breakpoints[4][1].replace("...", "\n  " + convertToCss(_2xlClasses))
             : ""
         }
-${hoverClasses.length !== 0 ? `:hover {\n ${convertToCss(hoverClasses)} }` : ""}
+${hoverClass.length !== 0 ? `:hover {\n ${convertToCss(hoverClass)} }` : ""}
 `;
 
     return resultCss.trimEnd();
 };
 
-const convertFromCssToJss = (css) => {
+export const convertFromCssToJss = (css) => {
     try {
         const root = postcss.parse(css);
         const jss = JSON.stringify(postcssJs.objectify(root))

@@ -1,0 +1,142 @@
+.main-container {
+    height: 100vh;
+}
+
+.nav-container {
+    width: 100%;
+}
+
+.header {
+    background-color: #000;
+    display: flex;
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid #1f2937;
+}
+
+.title {
+    flex-grow: 1;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: #d1d5db;
+}
+
+.logo-wrapper {
+    margin: 0 0.5rem;
+}
+
+.logo {
+    height: 24px;
+    width: 24px;
+}
+
+.title-text {
+    display: none;
+}
+
+.button-section {
+    display: flex;
+    align-items: center;
+}
+
+.github-button {
+    margin-right: 0.25rem;
+}
+
+.sponsor-button {
+    background-color: #111;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
+
+.sponsor-button:hover {
+    background-color: #374151;
+}
+
+.sponsor-link {
+    display: flex;
+    align-items: center;
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.sponsor-text {
+    padding-right: 0.25rem;
+    font-size: 0.875rem;
+    display: none;
+}
+
+.sponsor-logo {
+    height: 24px;
+    width: 24px;
+}
+
+.sponsor-name {
+    padding-left: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: #111827;
+    height: calc(100vh - 3rem);
+}
+
+.input-textarea,
+.output-textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    flex-grow: 1;
+    padding: 0.75rem;
+    background-color: #111;
+    color: #d1d5db;
+    outline: none;
+}
+
+.output-container {
+    display: flex;
+    width: 100%;
+    background-color: #111;
+    border-left: 1px solid #374151;
+}
+
+.copy-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.75rem;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .header {
+        padding: 0.5rem;
+    }
+
+    .title {
+        margin-right: 0.5rem;
+    }
+
+    .title-text {
+        display: flex;
+    }
+
+    .button-section {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .sponsor-text {
+        display: flex;
+    }
+
+    .content-section {
+        flex-direction: row;
+    }
+
+    .copy-icon {
+        margin-right: 0.25rem;
+    }
+}

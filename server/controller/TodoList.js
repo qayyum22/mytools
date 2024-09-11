@@ -1,38 +1,38 @@
-const { Todo } = require("../model/Todo");
+import { Todo } from "../model/Todo";
 
 
-exports.addTodo = async (req, res) => {
-
-    try {
-
-    } catch (err) {
-
-    }
-};
-
-exports.updateTodo = async (req, res) => {
+export async function addTodo(req, res) {
 
     try {
 
     } catch (err) {
 
     }
-};
+}
 
-exports.deleteTodo = async (req, res) => {
-
-    try {
-
-    } catch (err) {
-
-    }
-};
-
-exports.getAllTodo = async (req, res) => {
+export async function updateTodo(req, res) {
 
     try {
 
     } catch (err) {
 
     }
-};
+}
+
+export async function deleteTodo(req, res) {
+
+    try {
+
+    } catch (err) {
+
+    }
+}
+
+export async function getAllTodo(req, res) {
+
+    try {
+
+    } catch (err) {
+
+    }
+}

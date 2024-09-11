@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
 
-const TodoSchema = mongoose.Schema({
+const TodoSchema = Schema({
     todoHeading: {
         type: String,
         trim: true,
@@ -21,4 +21,4 @@ const TodoSchema = mongoose.Schema({
 }, { timestamps: true }
 );
 
-module.exports = mongoose.model("Todo", TodoSchema);
+export default model("Todo", TodoSchema);
